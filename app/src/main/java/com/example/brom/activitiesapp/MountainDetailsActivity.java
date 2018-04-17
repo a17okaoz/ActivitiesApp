@@ -6,6 +6,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
 
 public class MountainDetailsActivity extends AppCompatActivity {
 
@@ -16,14 +17,21 @@ public class MountainDetailsActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        Bundle extras = getIntent().getExtras();
+
+        String name = extras.getString("EXTRA_NAME");
+        String location = extras.getString("EXTRA_LOCATION");
+        String height = extras.getString("EXTRA_HEIGHT");
+
+        TextView nameTextView = (TextView) findViewById(R.id.textView);
+        TextView locationTextView = (TextView) findViewById(R.id.textView2);
+        TextView heightTextView = (TextView) findViewById(R.id.textView3);
+
+        nameTextView.setText(name);
+        locationTextView.setText(location);
+        heightTextView.setText(height);
     }
 
 }
